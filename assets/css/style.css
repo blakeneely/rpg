@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    background: url("../images/GOTbackground.jpg") no-repeat 50% 50% fixed;
+    background-size: cover;
+    color: #BFBD9D;
+    font-size: 13px;
+}
+.title-img {
+    display:block;
+    margin: 1.5em auto 1.5em auto;
+    width: 60%;
+}
+h1 {
+    text-align: center;
+    font-size: 16px;
+    padding: 1em;
+}
+.houses-container {
+    max-width: 375px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.houses {
+    width: 80px;
+    height: 100px;
+    display: inline-block;
+    padding: .5em;
+    margin: 5px;
+    border: 1px #BFBD9D solid;
+}
+.sigils {
+    height: 60px;
+    max-width: 100%;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.houses P {
+    text-align: center;
+    margin: .5em;
+}
