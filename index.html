@@ -10,27 +10,91 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-<header>
-    <img src="assets/images/GOTtitle.png" alt="game of thrones rpg" class="title-img">
-</header>
+
+    <header>
+        <img src="assets/images/GOTtitle.png" alt="game of thrones rpg" class="title-img">
+    </header>
+
     <h1>Choose your house:</h1>
-    <div class="houses-container">
-        <div class="stark-container houses">
-            <img src="assets/images/stark.png" alt="house stark" class="stark-img sigils">
+
+    <div class="houses-container container">
+        <div class="stark-container character houses" id="stark">
             <p>Stark</p>
+            <img src="assets/images/stark.png" alt="house stark" class="stark-img sigils">
+            <p>120</p>
         </div>
-        <div class="baratheon-container houses">
-            <img src="assets/images/baratheon.png" alt="house baratheon" class="baratheon-img sigils">
+        <div class="baratheon-container character houses" id="baratheon">
             <p>Baratheon</p>
+            <img src="assets/images/baratheon.png" alt="house baratheon" class="baratheon-img sigils">
+            <p>100</p>
         </div>
-        <div class="targaryen-container houses">
-            <img src="assets/images/targaryen.png" alt="house targaryen" class="targaryen-img sigils">
+        <div class="targaryen-container character houses" id="targaryen">
             <p>Targaryen</p>
+            <img src="assets/images/targaryen.png" alt="house targaryen" class="targaryen-img sigils">
+            <p>150</p>
         </div>
-        <div class="lannister-container houses">
-            <img src="assets/images/lannister.png" alt="house lannister" class="lannister-img sigils">
+        <div class="lannister-container character houses" id="lannister">
             <p>Lannister</p>
+            <img src="assets/images/lannister.png" alt="house lannister" class="lannister-img sigils">
+            <p>180</p>
         </div>
+    </div>
+
+    <div class="fight-container container">
+
+        <h2>Your house:</h2>
+
+        <div class="stark-container hero hidden houses" id="hero-stark">
+            <p>Stark</p>
+            <img src="assets/images/stark.png" alt="house stark" class="stark-img sigils">
+            <p>120</p>
+        </div>
+        <div class="baratheon-container hero hidden houses" id="hero-baratheon">
+            <p>Baratheon</p>
+            <img src="assets/images/baratheon.png" alt="house baratheon" class="baratheon-img sigils">
+            <p>100</p>
+        </div>
+        <div class="targaryen-container hero hidden houses" id="hero-targaryen">
+            <p>Targaryen</p>
+            <img src="assets/images/targaryen.png" alt="house targaryen" class="targaryen-img sigils">
+            <p>150</p>
+        </div>
+        <div class="lannister-container hero hidden houses" id="hero-lannister">
+            <p>Lannister</p>
+            <img src="assets/images/lannister.png" alt="house lannister" class="lannister-img sigils">
+            <p>180</p>
+        </div>
+
+        <div class="attack-btn">
+            <button class="button">ATTACK!</button>
+        </div>
+
+        <h2>Enemy:</h2>
+
+        <div class="stark-container enemy hidden houses" id="enemy-stark">
+            <p>Stark</p>
+            <img src="assets/images/stark.png" alt="house stark" class="stark-img sigils">
+            <p>120</p>
+        </div>
+        <div class="baratheon-container enemy hidden houses" id="enemy-baratheon">
+            <p>Baratheon</p>
+            <img src="assets/images/baratheon.png" alt="house baratheon" class="baratheon-img sigils">
+            <p>100</p>
+        </div>
+        <div class="targaryen-container enemy hidden houses" id="enemy-targaryen">
+            <p>Targaryen</p>
+            <img src="assets/images/targaryen.png" alt="house targaryen" class="targaryen-img sigils">
+            <p>150</p>
+        </div>
+        <div class="lannister-container enemy hidden houses" id="enemy-lannister">
+            <p>Lannister</p>
+            <img src="assets/images/lannister.png" alt="house lannister" class="lannister-img sigils">
+            <p>180</p>
+        </div>
+        
+        <p class="fight-text" id="hero-text">House Stark hits for 40 points!</p>
+        <p class="fight-text" id="enemy-text">House Lannister counters for 12 points!</p>
+
     </div>
 
     <script src="assets/javascript/game.js"></script>

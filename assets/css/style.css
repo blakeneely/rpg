@@ -1,30 +1,43 @@
 * {
     box-sizing: border-box;
 }
+
 body {
     background: url("../images/GOTbackground.jpg") no-repeat 50% 50% fixed;
     background-size: cover;
     color: #BFBD9D;
-    font-size: 13px;
+    font-size: 15px;
 }
 .title-img {
     display:block;
     margin: 1.5em auto 1.5em auto;
-    width: 60%;
+    width: 75%;
 }
 h1 {
     text-align: center;
     font-size: 16px;
     padding: 1em;
 }
-.houses-container {
+
+h2 {
+    text-align: center;
+    /* font-size: 15px; */
+    padding: .5em;
+}
+.container {
+    height: 130px;
     max-width: 375px;
     margin-left: auto;
     margin-right: auto;
 }
+
+.fight-container {
+    margin-top: 1em;
+}
+
 .houses {
     width: 80px;
-    height: 100px;
+    height: 120px;
     display: inline-block;
     padding: .5em;
     margin: 5px;
@@ -37,7 +50,56 @@ h1 {
     margin-left: auto;
     margin-right: auto;
 }
+
 .houses P {
     text-align: center;
-    margin: .5em;
+    margin: .25em 0 .25em 0;
+}
+
+.your-house {
+    display: block;
+    margin: .5em auto .5em auto;
+}
+
+.hero {
+    background: grey;
+}
+
+.enemy {
+    background: red;
+}
+
+.enemy, .hero{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.enemy {
+    background: red;
+}
+
+.button {
+    background: red;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    margin: 1em auto;
+    display: block;
+}
+
+.fight-text {
+    font-size: 20px;
+    text-align: center;
+    background: rgba(0,0,0,.6);
+    padding: .25em; 
+}
+
+.character:hover {
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
 }
