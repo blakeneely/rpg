@@ -3,6 +3,14 @@ var hero = 0;
 var enemies = 3;
 var heroSelected = false;
 var enemySelected = false;
+var starkHero = false;
+var starkEnemy = false;
+var baratheonHero = false;
+var baratheonEnemy = false;
+var targaryenHero = false;
+var targaryenEnemy = false;
+var lannisterHero = false;
+var lannisterEnemy = false;
 
 var stark = {
     name: "Stark",
@@ -36,12 +44,22 @@ function gameStart() {
     
 };
 
+function instructionsText(){
+    if (!enemySelected){
+        $("#instructions").text("Now chose an enemy!");
+    }
+    else if (heroSelected && enemySelected) {
+        $("#instructions").text("ATTACK!!!")
+    }
+};
+
 // On click hide main card and show hero or enemy card
 $("#stark").on("click", function(){
     if (!heroSelected){
         $(this).toggleClass("hidden");
         $("#hero-stark").toggleClass("hidden");
         heroSelected = true;
+        instructionsText();
     }
     else if (heroSelected && enemySelected) {
         return false;
@@ -49,7 +67,8 @@ $("#stark").on("click", function(){
     else {
         $(this).toggleClass("hidden");
         $("#enemy-stark").toggleClass("hidden");
-        enemySelected = true;    
+        enemySelected = true;  
+        instructionsText();  
     }
 });
 
@@ -58,6 +77,7 @@ $("#baratheon").on("click", function(){
         $(this).toggleClass("hidden");
         $("#hero-baratheon").toggleClass("hidden");
         heroSelected = true;
+        instructionsText();
     }
     else if (heroSelected && enemySelected) {
         return false;
@@ -66,6 +86,7 @@ $("#baratheon").on("click", function(){
         $(this).toggleClass("hidden");
         $("#enemy-baratheon").toggleClass("hidden");
         enemySelected = true;
+        instructionsText();
     }
 });
 
@@ -74,6 +95,7 @@ $("#targaryen").on("click", function(){
         $(this).toggleClass("hidden");
         $("#hero-targaryen").toggleClass("hidden");
         heroSelected = true;
+        instructionsText();
     }
     else if (heroSelected && enemySelected) {
         return false;
@@ -82,6 +104,7 @@ $("#targaryen").on("click", function(){
         $(this).toggleClass("hidden");
         $("#enemy-targaryen").toggleClass("hidden");
         enemySelected = true;
+        instructionsText();
     }
 });
 
@@ -90,6 +113,7 @@ $("#lannister").on("click", function(){
         $(this).toggleClass("hidden");
         $("#hero-lannister").toggleClass("hidden");
         heroSelected = true;
+        instructionsText();
     }
     else if (heroSelected && enemySelected) {
         return false;
@@ -98,6 +122,7 @@ $("#lannister").on("click", function(){
         $(this).toggleClass("hidden");
         $("#enemy-lannister").toggleClass("hidden");
         enemySelected = true;
+        instructionsText();
     }
 });
 
