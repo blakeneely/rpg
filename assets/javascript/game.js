@@ -6,6 +6,7 @@ $(document).ready(function() {
     var hero = {};
     var enemy = {};
     var ogAttack = 0;
+    var endAudio = new Audio ("assets/audio/game_of_thrones_end.mp3");
 
     var characters = {
         "Stark": {
@@ -87,6 +88,7 @@ $(document).ready(function() {
 
     function gameOver() {
         if (enemiesCount === 0) {
+            endAudio.play();
             $(".attack-button").toggleClass("hidden");
             $(".restart-button").toggleClass("hidden");
             $("#instructions").text("YOU WON THE THRONE!!");
