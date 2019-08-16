@@ -39,7 +39,7 @@ $(document).ready(function() {
             hpHtml: ".lannister-hp"
     }};
 
-    function instructionsText(){
+    function instructionsText(){                        // function to display instructions to choose enemy or attack
         if (!enemySelected){
             $("#instructions").text("Now chose an enemy!");
         }
@@ -49,23 +49,22 @@ $(document).ready(function() {
     };
 
     function fight() {
-        hero.hp = hero.hp - enemy.counter;              // deduct hero attack # from enemy hp
-        enemy.hp = enemy.hp - hero.attack;              // deduct enemy counter # from hero hp
+        hero.hp = hero.hp - enemy.counter;                    // deduct hero attack # from enemy hp
+        enemy.hp = enemy.hp - hero.attack;                    // deduct enemy counter # from hero hp
         $(enemy.hpHtml).text(enemy.hp);
         $(hero.hpHtml).text(hero.hp);
         $("#hero-text").text("You attacked House " + enemy.name + " for " + hero.attack + " damage!");
         $("#enemy-text").text("House " + enemy.name + " countered with " + enemy.attack + " damage");
         roundOver();
-        hero.attack =  hero.attack + ogAttack;          // add original hero attack to itself
+        hero.attack =  hero.attack + ogAttack;                // add original hero attack to itself
     };
 
-    function roundOver() {
-        if (enemy.hp <= 0) {
-            enemiesCount--;
-            $("#hero-text").text("You defeated House " + enemy.name + "!");
+    function roundOver() {                                    // function to check if each round is over
+        if (enemy.hp <= 0) {                                  // checks if enemy hp is 0 for defeat
+            enemiesCount--;                                   // lowers number of enemies left to defeat count
+            $("#hero-text").text("You defeated House " + enemy.name + "!");         // displays win text
             $("#enemy-text").text(" ");
-            // hide enemy card
-            if (enemy === characters["Stark"]) {
+            if (enemy === characters["Stark"]) {              // hide enemy card
                 $("#enemy-stark").toggleClass("hidden");
             }
             else if (enemy === characters["Baratheon"]) {
@@ -77,20 +76,20 @@ $(document).ready(function() {
             else if (enemy === characters["Lannister"]) {
                 $("#enemy-lannister").toggleClass("hidden");
             };
-            $("#instructions").text("CHOOSE A NEW ENEMY");
-            enemySelected = false;
-            gameOver();
+            $("#instructions").text("CHOOSE A NEW ENEMY");     // changes instructions to choose a new enemy
+            enemySelected = false;                             // flags that enemy is no longer selected
+            gameOver();                                        // run gameOver function to see if game has ended
         }
         else if (hero.hp <= 0) {
-            $("#instructions").text("You were defeated. Game over.")
+            $("#instructions").text("You were defeated. Game over.")        // checks if hero hp is 0 for defeat
             gameOver();
         }
     };
 
-    function gameOver() {
-        if (enemiesCount === 0) {
-            winAudio.play();
-            if (hero === characters["Stark"]) {
+    function gameOver() {                                       // function for game has ended
+        if (enemiesCount === 0) {                               // checks if there are no more enemies to defeat for win
+            winAudio.play();                                    // plays winning audio
+            if (hero === characters["Stark"]) {                 // shows winning character picture
                 $(".stark-wins").toggleClass("hidden")
             }
             else if (hero === characters["Baratheon"]) {
@@ -102,39 +101,39 @@ $(document).ready(function() {
             else if (hero === characters["Lannister"]) {
                 $(".lannister-wins").toggleClass("hidden")
             }
-            $(".attack-button").toggleClass("hidden");
-            $(".restart-button").toggleClass("hidden");
-            $("#instructions").text("YOU WON THE THRONE!!");
+            $(".attack-button").toggleClass("hidden");          // hides attack button
+            $(".restart-button").toggleClass("hidden");         // shows restart button
+            $("#instructions").text("YOU WON THE THRONE!!");    // changes instructions with winning text
         }
-        if (hero.hp <= 0) {
-            loseAudio.play();
-            $(".attack-button").toggleClass("hidden");
-            $(".restart-button").toggleClass("hidden");
-            $(".lose").toggleClass("hidden");
+        if (hero.hp <= 0) {                                     // checks if hero hp is 0 for loss
+            loseAudio.play();                                   // plays losing audio
+            $(".attack-button").toggleClass("hidden");          // hides attack button
+            $(".restart-button").toggleClass("hidden");         // shows restart button
+            $(".lose").toggleClass("hidden");                   // shows winning image
         }
     };
 
     // On click character hide main card and show hero or enemy card
     $("#stark").on("click", function(){
-        if (!heroSelected){                                 // Checks if hero has been selected yet
-            $(this).toggleClass("hidden");                  // Hides main card
-            $("#hero-stark").toggleClass("hidden");         // Shows matching hero card
-            hero = characters["Stark"];                     // Assigns clicked object to variable hero
-            ogAttack = hero.attack;                         // Assigns attack value to ogAttack for adding later
+        if (!heroSelected){                                     // Checks if hero has been selected yet
+            $(this).toggleClass("hidden");                      // Hides main card
+            $("#hero-stark").toggleClass("hidden");             // Shows matching hero card
+            hero = characters["Stark"];                         // Assigns clicked object to variable hero
+            ogAttack = hero.attack;                             // Assigns attack value to ogAttack for adding later
             console.log(hero);
-            heroSelected = true;                            // Flags that hero has been selected
-            instructionsText();                             // Updates instructions to choose enemy
+            heroSelected = true;                                // Flags that hero has been selected
+            instructionsText();                                 // Updates instructions to choose enemy
         }
-        else if (heroSelected && enemySelected) {           // If both hero and enemy selected stops click
+        else if (heroSelected && enemySelected) {               // If both hero and enemy selected stops click
             return false;
         }
         else {
-            $(this).toggleClass("hidden");                  // Hides main card
-            $("#enemy-stark").toggleClass("hidden");        // Shows matching enemy card
-            enemy = characters["Stark"];                    // Assigns clicked object to variable enemy
+            $(this).toggleClass("hidden");                      // Hides main card
+            $("#enemy-stark").toggleClass("hidden");            // Shows matching enemy card
+            enemy = characters["Stark"];                        // Assigns clicked object to variable enemy
             console.log(enemy);
-            enemySelected = true;                           // Flags that enemy has been selected
-            instructionsText();                             // Updates instructions to attack
+            enemySelected = true;                               // Flags that enemy has been selected
+            instructionsText();                                 // Updates instructions to attack
         }
     });
 
@@ -220,11 +219,6 @@ $(document).ready(function() {
     // On click restart button
     $(".restart-button").on("click", function(){
         location.reload();
-
     });
-
-
-
-
 
 });
