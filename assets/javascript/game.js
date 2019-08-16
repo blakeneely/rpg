@@ -6,14 +6,6 @@ $(document).ready(function() {
     var hero = {};
     var enemy = {};
     var ogAttack = 0;
-    // var starkHero = false;
-    // var starkEnemy = false;
-    // var baratheonHero = false;
-    // var baratheonEnemy = false;
-    // var targaryenHero = false;
-    // var targaryenEnemy = false;
-    // var lannisterHero = false;
-    // var lannisterEnemy = false;
 
     var characters = {
         "Stark": {
@@ -42,7 +34,9 @@ $(document).ready(function() {
     }};
 
     function gameRestart() {
-        
+        // reset variables
+        // hide enemy and hero cards
+        // 
     };
 
     function instructionsText(){
@@ -55,25 +49,41 @@ $(document).ready(function() {
     };
 
     function fight() {
-        hero.hp = hero.hp - enemy.counter;
-        enemy.hp = enemy.hp - hero.attack;
-        hero.attack =  hero.attack + ogAttack;
+        hero.hp = hero.hp - enemy.counter;      // deduct hero attack # from enemy hp
+        enemy.hp = enemy.hp - hero.attack;      // deduct enemy counter # from hero hp
+        hero.attack =  hero.attack + ogAttack;  // add original hero attack to itself
+        roundOver();
+        $("#hero-text").text("You attacked House " + enemy.name + " for " + hero.attack + " damage!");
+        $("#enemy-text").text("House " + enemy.name + " countered with " + enemy.attack + " damage");
         console.log("Hero hp: " + hero.hp);
         console.log("Hero attack: " + hero.attack);
         console.log("Enemy hp: " + enemy.hp);
-        // deduct hero attack # from enemy hp
-        // deduct enemy counter # from hero hp
     };
 
     function roundOver() {
-        if (hero.hp === 0) {
+        if (hero.hp <= 0) {
             alert("You lose. Game Over!")
         }
-        else if (enemy.hp === 0) {
+        else if (enemy.hp <= 0) {
+            enemiesCount--;
+            alert("bang");
             // hide enemy card
-            // change text to choose new enemy
-            // change text to attack again
-
+            if (enemy === characters["Stark"]) {
+                $("#enemy-stark").toggleClass("hidden");
+            }
+            else if (enemy === characters["Baratheon"]) {
+                $("#enemy-baratheon").toggleClass("hidden");
+            }
+            else if (enemy === characters["Targaryen"]) {
+                $("#enemy-targaryen").toggleClass("hidden");
+            }
+            else if (enemy === characters["Lannister"]) {
+                $("#enemy-lannister").toggleClass("hidden");
+            };
+            $("#instructions").text("CHOOSE A NEW ENEMY");
+            enemySelected = false;
+            $("#hero-text").text(" ");
+            $("#enemy-text").text(" ")
         }
     };
 
@@ -178,7 +188,8 @@ $(document).ready(function() {
         else {
             return false;
         }
-        
+        // $("#hero-text").text("You attacked House " + enemy.name + " for " + hero.attack + " damage!");
+        // $("#enemy-text").text("House " + enemy.name + " countered with " + enemy.attack + " damage");
     });
 
 
