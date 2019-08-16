@@ -24,6 +24,21 @@ h2 {
     /* font-size: 15px; */
     padding: .5em;
 }
+
+.win-container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 375px;
+    height: auto;
+}
+
+.win-container img {
+    width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .container {
     height: 130px;
     max-width: 375px;

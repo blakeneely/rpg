@@ -6,7 +6,8 @@ $(document).ready(function() {
     var hero = {};
     var enemy = {};
     var ogAttack = 0;
-    var endAudio = new Audio ("assets/audio/game_of_thrones_end.mp3");
+    var winAudio = new Audio ("assets/audio/game_of_thrones_end.mp3");
+    var loseAudio = new Audio ("assets/audio/cersei_play_the_game.mp3");
 
     var characters = {
         "Stark": {
@@ -59,11 +60,7 @@ $(document).ready(function() {
     };
 
     function roundOver() {
-        if (hero.hp <= 0) {
-            $("#instructions").text("You were defeated. Game over.")
-            gameOver();
-        }
-        else if (enemy.hp <= 0) {
+        if (enemy.hp <= 0) {
             enemiesCount--;
             $("#hero-text").text("You defeated House " + enemy.name + "!");
             $("#enemy-text").text(" ");
@@ -84,14 +81,36 @@ $(document).ready(function() {
             enemySelected = false;
             gameOver();
         }
+        else if (hero.hp <= 0) {
+            $("#instructions").text("You were defeated. Game over.")
+            gameOver();
+        }
     };
 
     function gameOver() {
         if (enemiesCount === 0) {
-            endAudio.play();
+            winAudio.play();
+            if (hero === characters["Stark"]) {
+                $(".stark-wins").toggleClass("hidden")
+            }
+            else if (hero === characters["Baratheon"]) {
+                $(".baratheon-wins").toggleClass("hidden")
+            }
+            else if (hero === characters["Targaryen"]) {
+                $(".targaryen-wins").toggleClass("hidden")
+            }
+            else if (hero === characters["Lannister"]) {
+                $(".lannister-wins").toggleClass("hidden")
+            }
             $(".attack-button").toggleClass("hidden");
             $(".restart-button").toggleClass("hidden");
             $("#instructions").text("YOU WON THE THRONE!!");
+        }
+        if (hero.hp <= 0) {
+            loseAudio.play();
+            $(".attack-button").toggleClass("hidden");
+            $(".restart-button").toggleClass("hidden");
+            $(".lose").toggleClass("hidden");
         }
     };
 
