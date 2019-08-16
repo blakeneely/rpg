@@ -88,6 +88,9 @@ h2 {
     margin: 1em auto;
     display: block;
 }
+.button:hover {
+    cursor: pointer;
+}
 
 .fight-text {
     font-size: 20px;
