@@ -41,7 +41,7 @@ $(document).ready(function() {
 
     function instructionsText(){                        // function to display instructions to choose enemy or attack
         if (!enemySelected){
-            $("#instructions").text("Now chose an enemy!");
+            $("#instructions").text("Now choose an enemy!");
         }
         else if (heroSelected && enemySelected) {
             $("#instructions").text("ATTACK!!!");
