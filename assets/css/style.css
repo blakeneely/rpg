@@ -39,9 +39,11 @@ h2 {
     max-width: 375px;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
 }
 .fight-container {
     margin-top: 1em;
+    height: 100%;
 }
 .houses {
     width: 80px;

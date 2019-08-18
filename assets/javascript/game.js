@@ -84,28 +84,53 @@ $(document).ready(function() {
             $("#instructions").text("You were defeated. Game over.")        // checks if hero hp is 0 for defeat
             gameOver();
         }
+        else if (hero.hp <=0 && enemy.hp <=0) {               // if both end with 0 hp hero still wins
+            enemiesCount--;                                   // lowers number of enemies left to defeat count
+            $("#hero-text").text("You defeated House " + enemy.name + "!");         // displays win text
+            $("#enemy-text").text(" ");
+            if (enemy === characters["Stark"]) {              // hide enemy card
+                $("#enemy-stark").toggleClass("hidden");
+            }
+            else if (enemy === characters["Baratheon"]) {
+                $("#enemy-baratheon").toggleClass("hidden");
+            }
+            else if (enemy === characters["Targaryen"]) {
+                $("#enemy-targaryen").toggleClass("hidden");
+            }
+            else if (enemy === characters["Lannister"]) {
+                $("#enemy-lannister").toggleClass("hidden");
+            };
+            $("#instructions").text("CHOOSE A NEW ENEMY");     // changes instructions to choose a new enemy
+            enemySelected = false;                             // flags that enemy is no longer selected
+            gameOver();                                        // run gameOver function to see if game has ended
+        }
     };
 
     function gameOver() {                                       // function for game has ended
         if (enemiesCount === 0) {                               // checks if there are no more enemies to defeat for win
             winAudio.play();                                    // plays winning audio
+            $(".houses-container").toggleClass("hidden");       // hides houses container
             if (hero === characters["Stark"]) {                 // shows winning character picture
-                $(".stark-wins").toggleClass("hidden")
+                $(".stark-wins").toggleClass("hidden");
+                $("#hero-stark").toggleClass("hidden");
             }
             else if (hero === characters["Baratheon"]) {
-                $(".baratheon-wins").toggleClass("hidden")
+                $(".baratheon-wins").toggleClass("hidden");
+                $("#hero-baratheon").toggleClass("hidden");
             }
             else if (hero === characters["Targaryen"]) {
-                $(".targaryen-wins").toggleClass("hidden")
+                $(".targaryen-wins").toggleClass("hidden");
+                $("#hero-targaryen").toggleClass("hidden");
             }
             else if (hero === characters["Lannister"]) {
-                $(".lannister-wins").toggleClass("hidden")
+                $(".lannister-wins").toggleClass("hidden");
+                $("#hero-lannister").toggleClass("hidden");
             }
             $(".attack-button").toggleClass("hidden");          // hides attack button
             $(".restart-button").toggleClass("hidden");         // shows restart button
             $("#instructions").text("YOU WON THE THRONE!!");    // changes instructions with winning text
         }
-        if (hero.hp <= 0) {                                     // checks if hero hp is 0 for loss
+        else if (hero.hp <= 0) {                                     // checks if hero hp is 0 for loss
             loseAudio.play();                                   // plays losing audio
             $(".attack-button").toggleClass("hidden");          // hides attack button
             $(".restart-button").toggleClass("hidden");         // shows restart button
