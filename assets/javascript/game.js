@@ -110,6 +110,7 @@ $(document).ready(function() {
         if (enemiesCount === 0) {                               // checks if there are no more enemies to defeat for win
             winAudio.play();                                    // plays winning audio
             $(".houses-container").toggleClass("hidden");       // hides houses container
+            $(".descrip-text").toggleClass("hidden");           // hides Your House and Enemy h2 text
             if (hero === characters["Stark"]) {                 // shows winning character picture
                 $(".stark-wins").toggleClass("hidden");
                 $("#hero-stark").toggleClass("hidden");
